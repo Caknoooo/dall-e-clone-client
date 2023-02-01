@@ -17,7 +17,7 @@ const CreatePost = () => {
 
   const handleSubmit = () => {};
 
-  const handleChange = (e: MouseEvent): void => {};
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {};
 
   const handleSurpriseMe = () => {};
 

@@ -6,9 +6,9 @@ type fieldSubmit = {
   name: string;
   placeholder: string;
   value: string;
-  handleChange: void;
+  handleChange: any;
   isSurpriseMe?: boolean;
-  handleSurpriseMe?: void;
+  handleSurpriseMe?: any;
 };
 
 const FormField = ({

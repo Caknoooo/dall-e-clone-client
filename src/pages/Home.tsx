@@ -7,11 +7,11 @@ type input = {
 }
 
 const RenderCards = ({data, title}: input) => {
-  // if (data?.length > 0) {
-  //   return data.map((post : []) => {
-  //     <Card key={post._id}{...post} />
-  //   })
-  // }
+  if (data?.length > 0) {
+    return data.map((post : any) => {
+      <Card key={post._id}{...post} />
+    })
+  }
 
   return (
     <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">

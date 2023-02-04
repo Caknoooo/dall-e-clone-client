@@ -23,7 +23,7 @@ const CreatePost = () => {
 
       try {
         const response = await fetch(
-          "https://dall-e-clone-server-r86nc0dcx-caknoooo.vercel.app/api/v1/post",
+          "https://dall-e-clone-server-iota.vercel.app/api/v1/post",
           {
             method: "POST",
             headers: {
@@ -60,7 +60,7 @@ const CreatePost = () => {
       try {
         setGeneratingImg(true);
         const response = await fetch(
-          "https://dall-e-clone-server-r86nc0dcx-caknoooo.vercel.app/api/v1/dalle",
+          "https://dall-e-clone-server-iota.vercel.app/api/v1/dalle",
           {
             method: "POST",
             headers: {

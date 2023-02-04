@@ -29,7 +29,7 @@ export const Home = () => {
       setLoading(true);
       try {
         const response: Response = await fetch(
-          "http://localhost:8080/api/v1/post",
+          "https://dall-e-clone-server-r86nc0dcx-caknoooo.vercel.app/api/v1/post",
           {
             method: "GET",
             headers: {

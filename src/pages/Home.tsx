@@ -1,30 +1,56 @@
-import React, { useState, useEffect } from 'react'
-import { Card, Loader, FormField } from '../components';
+import React, { useState, useEffect } from "react";
+import { Card, Loader, FormField } from "../components";
 
 type input = {
   title: string;
-  data: any; 
-}
+  data: any;
+};
 
-const RenderCards = ({data, title}: input) => {
+const RenderCards = ({ data, title }: input) => {
   if (data?.length > 0) {
-    return data.map((post : any) => {
-      <Card key={post._id}{...post} />
-    })
+    return data.map((post: any) => {
+      <Card key={post._id} {...post} />;
+    });
   }
 
   return (
-    <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">
-      {title}
-    </h2>
-  )
-}
+    <h2 className="mt-5 font-bold text-[#6449ff] text-xl uppercase">{title}</h2>
+  );
+};
 
 export const Home = () => {
   const [loading, setLoading] = useState(false);
   const [allPosts, setAllPosts] = useState(null);
-  const [searchText, setSearchText] = useState('');
-  
+  const [searchText, setSearchText] = useState("");
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      setLoading(true);
+      try {
+        const response: Response = await fetch(
+          "http://localhost:8080/api/v1/post",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const result = await response.json();
+          setAllPosts(result.data.reverse());
+        }
+      } catch (error) {
+        alert(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, []);
+
   return (
     <section className="max-w-7xl mx-auto">
       <div>
@@ -37,9 +63,7 @@ export const Home = () => {
         </p>
       </div>
 
-      <div className="mt-16">
-        
-      </div>
+      <div className="mt-16"></div>
 
       <div className="mt-10">
         {loading ? (
@@ -56,15 +80,9 @@ export const Home = () => {
             )}
             <div className="grid lg:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-3">
               {searchText ? (
-                <RenderCards
-                  data={[]}
-                  title="No Search results found"
-                />
+                <RenderCards data={[]} title="No Search results found" />
               ) : (
-                <RenderCards
-                  data={[]}
-                  title="No Post Found"
-                />
+                <RenderCards data={allPosts} title="No Post Found" />
               )}
             </div>
           </>
@@ -72,6 +90,6 @@ export const Home = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Home;

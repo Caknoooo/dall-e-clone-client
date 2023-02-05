@@ -25,6 +25,11 @@ const App = () => {
           <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </main>
+      <footer className="footer">
+        <div className="align-items-center text-center">
+          <p>Copyright © 2023 Cakno All Right Reserved.</p>
+        </div>
+      </footer>
     </BrowserRouter>
   );
 };

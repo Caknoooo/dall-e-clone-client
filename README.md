@@ -28,7 +28,7 @@ you can get the API code from the official website
 
 - Change directory to client folder and replace the fetching api destination with localhost:8080
 
-after you replace all fetch urls taken, then you just have to run it
+After you replace all fetch urls taken, then you just have to run it
 
 ```
 npm run dev -> for client side
